@@ -1,15 +1,10 @@
+- var client = "Charlotte is Mine"
+- var siteTitle = "IN SOMEWHERE NIGHTS"
+
 doctype
 html(lang="ja")
   head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-    meta(name="description", content="")
-    meta(name="keywords", content="")
-    meta(name="author", content="")
-    title タイトル
-    link(rel='stylesheet', href="css/style.css")
+    include common/_head.pug
   body
-    section
-      h1 HELLO WORLD
-    script(src='./js/script.js')
+    include components/_mainVisual.pug
+    include common/_scripts.pug

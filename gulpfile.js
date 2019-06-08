@@ -2,6 +2,8 @@ var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
 var pug = require('gulp-pug');
 var sass = require('gulp-sass');
+var sassGlob = require('gulp-sass-glob');
+var autoprefixer = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
 var watch = require('gulp-watch');
@@ -18,9 +20,14 @@ gulp.task('pug', function buildHTML() {
 gulp.task('sass', function () {
 	return gulp.src('./works/scss/**/*.scss')
 		.pipe(plumber())
+		.pipe(sassGlob())
 		.pipe(sass({
 			outputStyle: 'expanded'
 		}).on('error', sass.logError))
+		.pipe(autoprefixer({
+			cascade: false,
+			grid: true
+		}))
 		.pipe(gulp.dest('./dist/css'))
 		.pipe(browserSync.stream());
 });

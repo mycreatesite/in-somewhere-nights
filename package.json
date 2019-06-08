@@ -1,5 +1,5 @@
 {
-  "name": "myc-project",
+  "name": "in-somewhere-nights",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -19,10 +19,15 @@
     "@babel/preset-env": "^7.4.5",
     "browser-sync": "^2.24.6",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
     "gulp-babel": "^8.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.1",
+    "gulp-sass-glob": "^1.0.9",
     "gulp-watch": "^5.0.1"
-  }
+  },
+  "browserslist": [
+    "last 1 versions"
+  ]
 }
