@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300i,400,400i,600,600i,700,700i&display=swap');
+
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: 'Josefin Sans', "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 1.4rem;
+	font-weight: $font-mid;
+	letter-spacing: 0.08em;
+	color: $color-main;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+::selection {
+	background: $color-sub;
+}
+
+.secHead {
+	font-size: 3rem;
+}
+
+.btn {
+	display: block;
+	font-size: 2rem;
+	font-style: italic;
+	font-weight: $font-semibold;
+	span {
+		font-style:normal;
+		font-size: 1.4rem;
+		letter-spacing: 0;
+	}
+}

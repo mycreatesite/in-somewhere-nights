@@ -4,12 +4,13 @@ var pug = require('gulp-pug');
 var sass = require('gulp-sass');
 var sassGlob = require('gulp-sass-glob');
 var autoprefixer = require('gulp-autoprefixer');
+var wait = require('gulp-wait');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
 var watch = require('gulp-watch');
 
 gulp.task('pug', function buildHTML() {
-	return gulp.src('./works/pug/**/*.pug')
+	return gulp.src('./works/pug/*.pug')
 		.pipe(plumber())
 		.pipe(pug({
 			pretty: '\t'
@@ -19,6 +20,7 @@ gulp.task('pug', function buildHTML() {
 
 gulp.task('sass', function () {
 	return gulp.src('./works/scss/**/*.scss')
+		.pipe(wait(500))
 		.pipe(plumber())
 		.pipe(sassGlob())
 		.pipe(sass({

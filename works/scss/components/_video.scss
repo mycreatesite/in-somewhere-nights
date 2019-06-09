@@ -1,0 +1,58 @@
+section.video {
+	position: relative;
+	margin: 200px 0;
+		display: flex;
+		align-items: center;
+		.left {
+			width: 400px;
+			padding-left: 100px;
+			text-align: center;
+			.secHead {
+				position: relative;
+				margin-bottom: 30px;
+				&::before {
+					position: absolute;
+					left: 50%;
+					bottom: 9rem;
+					content: '';
+					display: block;
+					width: 1px;
+					height: 400px;
+					background: $color-sub;
+				}
+			}
+			.btn {
+				position: relative;
+				line-height: 3;
+				background: $color-main;
+				color: $color-accent;
+				margin-bottom: 20px;
+				&:last-of-type {
+					&::after {
+						position: absolute;
+						left: 50%;
+						top: 12rem;
+						content: '';
+						display: block;
+						width: 1px;
+						height: 400px;
+						background: $color-sub;
+					}
+				}
+			}
+		}
+		.right {
+			position: relative;
+			right: 0;
+			width: calc(100% - 400px);
+			height: 0;
+			padding-top: 40%;
+			iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+}

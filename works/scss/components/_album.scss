@@ -1,0 +1,52 @@
+section.album {
+	position: relative;
+	z-index: 2;
+	.container.outer {
+		display: flex;
+		.left {
+			margin-top: -18vh;
+			width: 50%;
+			padding-right: 5%;
+			img {
+				width: 100%;
+			}
+		}
+		.right {
+			width: 50%;
+			padding-left: 5%;
+			.secHead {
+				margin-bottom: 70px;
+			}
+			.info {
+				display: flex;
+				ul {
+					li {
+						list-style-type: none;
+						font-weight: $font-semibold;
+					}
+				}
+				.songs {
+					margin-right: 50px;
+					ul {
+						li {
+							font-size: 1.5rem;
+							line-height: 2;
+						}
+					}
+				}
+				.data {
+					ul {
+						padding: 70px 50px;
+						border-left: 1px solid $color-sub;
+						li {
+							font-size: 1.1rem;
+							color: $color-sub;
+							line-height: 1.8;
+							font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+						}
+					}
+				}
+			}
+		}
+	}
+}

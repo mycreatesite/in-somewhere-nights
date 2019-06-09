@@ -1,19 +1,545 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300i,400,400i,600,600i,700,700i&display=swap");
+html {
+  font-size: 62.5%;
 }
 
-section {
+body {
+  font-family: 'Josefin Sans', "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #1e1e1e;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::-moz-selection {
+  background: #B0C0B5;
+}
+
+::selection {
+  background: #B0C0B5;
+}
+
+.secHead {
+  font-size: 3rem;
+}
+
+.btn {
+  display: block;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.btn span {
+  font-style: normal;
+  font-size: 1.4rem;
+  letter-spacing: 0;
+}
+
+.container.inner {
+  width: calc(100% - 200px);
+  margin: 0 auto;
+}
+
+.container.outer {
+  width: calc(100% - 100px);
+  margin: 0 auto;
+}
+
+section.album {
+  position: relative;
+  z-index: 2;
+}
+
+section.album .container.outer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+}
+
+section.album .container.outer .left {
+  margin-top: -18vh;
+  width: 50%;
+  padding-right: 5%;
+}
+
+section.album .container.outer .left img {
   width: 100%;
 }
 
-section h1 {
+section.album .container.outer .right {
+  width: 50%;
+  padding-left: 5%;
+}
+
+section.album .container.outer .right .secHead {
+  margin-bottom: 70px;
+}
+
+section.album .container.outer .right .info {
+  display: flex;
+}
+
+section.album .container.outer .right .info ul li {
+  list-style-type: none;
+  font-weight: 600;
+}
+
+section.album .container.outer .right .info .songs {
+  margin-right: 50px;
+}
+
+section.album .container.outer .right .info .songs ul li {
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+section.album .container.outer .right .info .data ul {
+  padding: 70px 50px;
+  border-left: 1px solid #B0C0B5;
+}
+
+section.album .container.outer .right .info .data ul li {
+  font-size: 1.1rem;
+  color: #B0C0B5;
+  line-height: 1.8;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.comments {
+  margin: 300px 0;
+  text-align: center;
+}
+
+.comments .commentsArea {
+  width: 70%;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+
+.comments .commentsArea .commentItem {
+  position: relative;
+  text-align: left;
+  padding-left: 5%;
+}
+
+.comments .commentsArea .commentItem .name {
+  font-size: 2.8rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.comments .commentsArea .commentItem .name::first-letter {
+  font-size: 5.5rem;
+  color: #ffdb34;
+}
+
+.comments .commentsArea .commentItem .belongs {
+  display: inline-block;
+  font-weight: 600;
+  color: #ffdb34;
+  background: #1e1e1e;
+  padding: 5px 15px;
+}
+
+.comments .commentsArea .commentItem .talk {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  width: 80%;
+  padding: 20px 5% 20px 8%;
+  margin-top: -10px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 2.2;
+  border: 1px solid #B0C0B5;
+}
+
+.comments .commentsArea .commentItem .talk::before {
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  display: block;
+  content: '';
+  width: 50px;
+  height: 50px;
+  background: #fff;
+}
+
+.comments .commentsArea .commentItem .talk::after {
+  position: absolute;
+  left: -1px;
+  bottom: -1px;
+  display: block;
+  content: '';
+  width: 50px;
+  height: 50px;
+  background: #fff;
+}
+
+.footer {
+  position: relative;
+  text-align: center;
+  padding: 150px 0;
+}
+
+.footer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 100px);
+  height: 100%;
+  background: #1e1e1e;
+}
+
+.footer .btn {
+  position: relative;
+  width: 50%;
+  color: #ffdb34;
+  border: 2px solid #ffdb34;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.footer .btn::before {
+  position: absolute;
+  left: 50%;
+  top: -270px;
+  content: '';
+  display: block;
+  width: 2px;
+  height: 300px;
+  background: #ffdb34;
+}
+
+.footer .btn span {
+  line-height: 3;
+}
+
+.footer .feet {
+  height: 50px;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.footer .feet .icons {
+  background: #ffdb34;
+  width: 35%;
+  height: 100%;
+}
+
+.footer .feet .icons ul {
+  display: flex;
+  justify-content: center;
+  color: #1e1e1e;
+}
+
+.footer .feet .icons ul li {
+  list-style-type: none;
+  line-height: 50px;
+  font-size: 2.2rem;
+  margin: 0 0.9rem;
+  transition: 0.3s;
+}
+
+.footer .feet .icons ul li:hover {
+  color: white;
+}
+
+.footer .feet .icons ul li a i {
+  vertical-align: -12%;
+}
+
+.footer .feet .copy {
+  width: 70%;
+  padding-right: 50px;
+  opacity: 0.8;
   text-align: right;
-  font-size: 10rem;
-  color: #ff8833;
+}
+
+.footer .feet .copy small {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-right: 10px;
+  letter-spacing: 0.05em;
+}
+
+.footer .feet .copy img {
+  width: 60px;
+  height: 30px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+header {
+  position: relative;
+  z-index: 100;
+}
+
+header .rightTop {
+  position: fixed;
+  top: 70px;
+  right: 50px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+header .rightTop h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+header .rightTop p {
+  color: #B0C0B5;
+  font-style: italic;
+}
+
+header nav.desktopNav {
+  position: fixed;
+  top: 70px;
+  left: 40px;
+  -webkit-transform: rotate(-90deg) translateX(-100%);
+  transform: rotate(-90deg) translateX(-100%);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
+
+header nav.desktopNav li {
+  font-weight: 600;
+  font-size: 1.6rem;
+  display: inline-block;
+}
+
+header nav.desktopNav li + li {
+  margin-left: 30px;
+}
+
+header nav.desktopNav li a {
+  line-height: 2;
+}
+
+header nav.desktopNav li::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transform-origin: right;
+  transform-origin: right;
+  background: #ffdb34;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+header nav.desktopNav li:hover::after {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+section.mainVisual {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+section.mainVisual .container {
+  position: absolute;
+  right: 0;
+  top: 200px;
+  width: 80%;
+  height: 67vh;
+}
+
+section.mainVisual .container .square {
+  display: inline-block;
+  position: absolute;
+  top: -8rem;
+  left: -9rem;
+  width: 50%;
+  height: 55vh;
+  border: 1px solid #B0C0B5;
+}
+
+section.mainVisual .container .mvImages .mv {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: bottom right;
+  object-position: bottom right;
+}
+
+section.mainVisual .container .mvImages .logo {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: 100px;
+  height: 37px;
+}
+
+section.mainVisual .container .mvTxt {
+  position: absolute;
+  top: -3rem;
+  left: -2.6rem;
+  width: 50%;
+}
+
+section.mainVisual .container .mvTxt .mvHead {
+  margin-bottom: 1rem;
+  font-size: 4.5vw;
+  font-style: italic;
+  color: #ffdb34;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+section.mainVisual .container .mvTxt .txt {
+  margin-bottom: 3rem;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+
+section.mainVisual .container .mvTxt .mvDesc {
+  text-align: center;
+  width: 80%;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #fff;
+  line-height: 2.5;
+  background: #1e1e1e;
+}
+
+section.party {
+  position: relative;
+  margin: 200px 0;
+  display: flex;
+  align-items: center;
+}
+
+section.party .left {
+  width: calc(100% - 400px);
+}
+
+section.party .left img {
+  width: 100%;
+  display: block;
+}
+
+section.party .right {
+  width: 400px;
+  padding-right: 100px;
+  text-align: center;
+}
+
+section.party .right .secHead {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+section.party .right .btn {
+  position: relative;
+  left: -20px;
+  line-height: 1;
+  padding: 35px 0;
+  color: #fff;
+  font-weight: 700;
+  background: #ffdb34;
+  margin-bottom: 20px;
+}
+
+section.party::after {
+  position: absolute;
+  left: 50%;
+  bottom: -200px;
+  content: '';
+  display: block;
+  width: 1px;
+  height: 200px;
+  background: #B0C0B5;
+}
+
+section.video {
+  position: relative;
+  margin: 200px 0;
+  display: flex;
+  align-items: center;
+}
+
+section.video .left {
+  width: 400px;
+  padding-left: 100px;
+  text-align: center;
+}
+
+section.video .left .secHead {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+section.video .left .secHead::before {
+  position: absolute;
+  left: 50%;
+  bottom: 9rem;
+  content: '';
+  display: block;
+  width: 1px;
+  height: 400px;
+  background: #B0C0B5;
+}
+
+section.video .left .btn {
+  position: relative;
+  line-height: 3;
+  background: #1e1e1e;
+  color: #ffdb34;
+  margin-bottom: 20px;
+}
+
+section.video .left .btn:last-of-type::after {
+  position: absolute;
+  left: 50%;
+  top: 12rem;
+  content: '';
+  display: block;
+  width: 1px;
+  height: 400px;
+  background: #B0C0B5;
+}
+
+section.video .right {
+  position: relative;
+  right: 0;
+  width: calc(100% - 400px);
+  height: 0;
+  padding-top: 40%;
+}
+
+section.video .right iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
