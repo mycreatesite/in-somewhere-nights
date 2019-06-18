@@ -1,19 +1,71 @@
 header {
 	position: relative;
 	z-index: $z-header;
+	.hamb {
+		display: none;
+		-webkit-tap-highlight-color:rgba(0,0,0,0);
+		@include md {
+			position: fixed;
+			top: 40px;
+			right: 40px;
+			z-index: 10;
+			display: inline-block;
+			width: 40px;
+			margin-bottom: 15px;
+			padding: 10px;
+			span {
+				display: block;
+				width: 20px;
+				height: 2px;
+				margin: 5px 0;
+				width: 100%;
+				background: $color-main;
+				transition: all 0.2s linear;
+			}
+			&.is-show {
+				span {
+					transform: rotate(-30deg);
+					width: 110%;
+					+ span {
+						transform: rotate(-30deg) translateX(-3px);
+						width: 80%;
+						margin-top: 6px;
+					}
+				}
+			}
+		}
+		@include sm {
+			top: 25px;
+			right: 5px;
+		}
+	}
 	.rightTop {
 		position: fixed;
 		top: 70px;
 		right: 50px;
 		text-align: right;
 		line-height: 1.5;
+		@include md {
+			position: absolute;
+			top: 110px;
+		}
+		@include sm {
+			top: 75px;
+			right: 15px;
+		}
 		h1 {
-			font-size: 1.4rem;
+			font-size: 1.35rem;
 			font-weight: 600;
+			@include sm {
+				font-size: 1.1rem;
+			}
 		}
 		p {
 			color: $color-sub;
 			font-style: italic;
+			@include sm {
+				font-size: 1.1rem;
+			}
 		}
 	}
 	nav {
@@ -23,15 +75,19 @@ header {
 			left: 40px;
 			transform: rotate(-90deg) translateX(-100%);
 			transform-origin: left top;
+			@include md {
+				display: none;
+			}
 			li {
 				font-weight: $font-semibold;
 				font-size: 1.6rem;
 				display: inline-block;
+				line-height: 2;
 				+ li {
 					margin-left: 30px;
 				}
 				a {
-					line-height: 2;
+					display: block;
 				}
 				&::after {
 					content: '';
@@ -41,10 +97,87 @@ header {
 					transform: scale(0);
 					transform-origin: right;
 					background: $color-accent;
-					transition: transform 0.2s;
+					transition: transform 0.4s;
 				}
 				&:hover::after {
 					transform: scale(1);
+				}
+				&.is-active {
+					&::after {
+						content: '';
+						display: block;
+						width: 100%;
+						height: 2px;
+						transform: scale(1);
+						background: $color-accent;
+					}
+				}
+			}
+		}
+		&.spNav {
+			display: none;
+			@include md {
+				position: fixed;
+				display: block;
+				top: 110px;
+				right: 0;
+				z-index: 10;
+				padding: 9rem 8rem;
+				text-align: right;
+				color: #fff;
+				font-style: italic;
+				background: $color-main;
+				transform: translate3d(100%,0,0);
+				transition: 0.4s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+				ul {
+					li {
+						a {
+							position: relative;
+							display: block;
+							font-size: 2rem;
+							line-height: 3;
+							letter-spacing: 0.12em;
+							visibility: hidden;
+							transform: translate3d(0,10px,0) rotate(6deg);
+							transition: 0.8s transform ease-in-out;
+							&::after {
+								content: '';
+								position: absolute;
+								display: block;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: $color-main;
+								transition: 0.9s height linear;
+							}
+						}
+					}
+				}
+				&.is-show {
+					transform: translate3d(0,0,0);
+					ul {
+						li {
+							a {
+								transform: translate3d(0,0,0) rotate(0deg);
+								visibility: visible;
+								&::after {
+									height: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+			@include sm {
+				top: 75px;
+				padding: 4rem 4rem 5rem;
+				ul {
+					li {
+						a {
+							font-size: 1.6rem;
+						}
+					}
 				}
 			}
 		}

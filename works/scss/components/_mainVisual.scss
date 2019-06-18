@@ -2,30 +2,61 @@ section.mainVisual {
 	position: relative;
 	width: 100%;
 	height: 100vh;
+	@include sm {
+		height: 650px;
+	}
 	.container {
 		position: absolute;
 		right: 0;
-		top: 200px;
+		top: 25vh;
 		width: 80%;
-		height: 67vh;
+		height: 65vh;
+		@include md {
+			top: 270px;
+			width: 95%;
+			height: 500px;
+		}
+		@include sm {
+			width: calc(100% - 15px);
+			height: 240px;
+		}
 		.square {
 			display: inline-block;
 			position: absolute;
 			top: -8rem;
 			left: -9rem;
 			width: 50%;
-			height: 55vh;
+			height: 61vh;
 			border: 1px solid $color-sub;
+			opacity: 0;
+			@include sm {
+				top: -12rem;
+				left: -2rem;
+				height: 37vh;
+				width: 37vh;
+			}
 		}
 		.mvImages {
+			position: relative;
+			height: 65vh;
+			overflow: hidden;
+			@include md {
+				height: 500px;
+			}
+			@include sm {
+				height: 240px;
+			}
 			.mv {
-				position: absolute;
-				top: 0;
-				right: 0;
+				position: relative;
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				object-position: bottom right;
+				font-family: 'object-fit: cover;';
+				object-position: 90%;
+				opacity: 0;
+				@include md {
+					object-position: 75%;
+				}
 			}
 			.logo {
 				position: absolute;
@@ -33,6 +64,17 @@ section.mainVisual {
 				right: 50px;
 				width: 100px;
 				height: 37px;
+				opacity: 0;
+				@include md {
+					bottom: 20px;
+					right: 20px;
+				}
+				@include sm {
+					width: 60px;
+					height: 23px;
+					top: 10px;
+					right: 15px;
+				}
 			}
 		}
 		.mvTxt {
@@ -40,30 +82,155 @@ section.mainVisual {
 			top: -3rem;
 			left: -2.6rem;
 			width: 50%;
+			@include md {
+				left: -2rem;
+			}
+			@include sm {
+				top: -9rem;
+				left: 0;
+			}
 			.mvHead {
-				margin-bottom: 1rem;
-				font-size: 4.5vw;
+				margin-bottom: 1.5rem;
+				font-size: 5vw;
 				font-style: italic;
+				font-weight: $font-semibold;
 				color: $color-accent;
-				letter-spacing: 0.08em;
-				line-height: 1.3;
+				letter-spacing: 0.03em;
+				line-height: 1.1;
+				opacity: 0;
+				span {
+					position: relative;
+					opacity: 0;
+					&:nth-of-type(odd) {
+						top: 15px;
+					}
+					&:nth-of-type(even) {
+						bottom: 15px;
+					}
+				}
+				@include md {
+					font-size: 7rem;
+				}
+				@include sm {
+					letter-spacing: 0;
+					margin-bottom: 0.5rem;
+					font-size: 3.9rem;
+				}
 			}
 			.txt {
-				margin-bottom: 3rem;
+				margin-bottom: 3.5rem;
 				line-height: 1.5;
 				font-size: 1.2rem;
 				font-style: italic;
-				letter-spacing: 0.1em;
+				letter-spacing: 0.05em;
+				opacity: 0;
+				@include sm {
+					width: 85%;
+					font-size: 1rem;
+					margin-bottom: 2rem;
+					margin-left: 5px;
+					letter-spacing: 0;
+					line-height: 1.3;
+				}
+			}
+			.mvDescOuter {
+				width: 80%;
+				position: relative;
+				overflow: hidden;
+				@include md {
+					left: -5%;
+				}
+				@include sm {
+					left: -15px;
+					width: 90%;
+				}
 			}
 			.mvDesc {
 				text-align: center;
-				width: 80%;
+				width: 100%;
+				max-width: 500px;
 				font-size: 2rem;
 				font-weight: $font-semibold;
 				letter-spacing: 0.18em;
 				color: #fff;
-				line-height: 2.5;
+				line-height: 3;
 				background: $color-main;
+				opacity: 0;
+				@include sm {
+					width: 100%;
+					font-size: 1.1rem;
+				}
+			}
+		}
+	}
+	&.is-active {
+		.container {
+			.square {
+				animation: fadeLeftTop 0.6s forwards ease;
+				@keyframes fadeLeftTop {
+					0% {
+						opacity: 0;
+						top: -5rem;
+						left: -6rem;
+					}
+					100% {
+						opacity: 1;
+						top: -8rem;
+						left: -9rem;
+					}
+				}
+				@include sm {
+					@keyframes fadeLeftTop {
+						0% {
+							opacity: 0;
+							top: -9rem;
+							left: -1rem;
+						}
+						100% {
+							opacity: 1;
+							top: -12rem;
+							left: -2rem;
+						}
+					}
+				}
+			}
+			.mvImages {
+				&::after {
+					@include labelFx-label
+				}
+				.mv {
+					@include labelFx-show
+				}
+				.logo {
+					@include labelFx-show
+				}
+			}
+			.mvTxt {
+				.txt {
+					animation: fadeLeft 0.6s $labelFxDelay*3 both ease;
+					@keyframes fadeLeft {
+						0% {
+							opacity: 0;
+							transform: translateX(-10px);
+						}
+						100% {
+							opacity: 1;
+							transform: translateX(0);
+						}
+					}
+				}
+				.mvDescOuter {
+					&::after {
+						@include labelFx-label(
+							$color:$color-accent,
+							$delay1: $labelFxDelay*1.5,
+							$delay2:1s
+							)
+					}
+				}
+				.mvDesc {
+					@include labelFx-show($delay: 1s)
+				}
 			}
 		}
 	}

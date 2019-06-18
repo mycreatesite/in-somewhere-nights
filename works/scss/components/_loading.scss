@@ -1,0 +1,96 @@
+.loading {
+	position: fixed;
+	z-index: $z-loading;
+	width: 100%;
+	height: 100vh;
+	color: #fff;
+	&::before,&::after {
+		content: '';
+		display: block;
+		height: 50vh;
+		background: $color-main;
+		transition: transform 0.8s 0s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+	}
+	&.is-active {
+		&::before {
+			transform: translate3d(0,-100%,0);
+
+		}
+		&::after {
+			transform: translate3d(0,100%,0);
+
+		}
+	}
+	.loading_img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		animation: fadeIn 3s 0.5s backwards;
+		@include sm {
+			top: 45%;
+		}
+		.logo,.frame {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.logo {
+			width: 80px;
+			height: 30px;
+			@include sm {
+				width: 70px;
+				height: 26px;
+			}
+		}
+		.frame {
+			width: 110px;
+			height: 110px;
+			@include sm {
+				width: 60px;
+				height: 60px;
+			}
+			.stroke-still {
+				stroke: #232323;
+			}
+			.stroke-animation {
+				animation: stroke-spacing 2s ease-in, stroke-color 4s linear;
+				animation-iteration-count: infinite;
+				animation-delay: 0;
+				animation-direction: normal;
+				animation-fill-mode: forwards;
+				animation-play-state: running;
+				transform-origin: center center;
+			}			
+			@keyframes stroke-spacing {
+				0% {
+					stroke-dasharray: 0 200;
+				}
+				45% {
+					stroke-dashoffset: 0;
+					stroke-dasharray: 200 200;
+				}
+				90% {
+					stroke-dashoffset: -200;
+					stroke-dasharray: 200 200;
+				}
+				100% {
+					stroke-dashoffset: -200;
+					stroke-dasharray: 200 200;
+				}
+			}
+			@keyframes stroke-color {
+				0%  { stroke: #ffdb34; }
+				24% { stroke: #b77012; }
+				25% { stroke: #327864; }
+				49% { stroke: #327864; }
+				50% { stroke: #a7d9e8; }
+				74% { stroke: #3c859b; }
+				75% { stroke: #d1be6a; }
+				99% { stroke: #918b71; }
+			}
+		}
+	}
+}
+	

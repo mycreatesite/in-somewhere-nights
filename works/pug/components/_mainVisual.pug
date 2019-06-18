@@ -1,11 +1,11 @@
-section.mainVisual
+section.mainVisual#mainVisual
 	.container
-		span.square
+		span(class="square parallax" data-paraSpeed="-10")
 		.mvImages
-			img(src="img/mv.jpg" alt="Charlotte is Mine" class="mv")
+			img(src="img/mv.jpg" alt="Charlotte is Mine" class="mv mvParallax")
 			img(src="img/logo_blk.svg" alt="Charlotte is Mine" class="logo")
 		.mvTxt
-			h1.mvHead
+			h1.mvHead#mvHead
 				| "IN
 				br
 				| SOMEWHERE
@@ -17,4 +17,5 @@ section.mainVisual
 				| "Charlotte is Mine" is gonna open a crack
 				br
 				| in Japanese indie rock scene.
-			p.mvDesc 2019.06.26 on sale
+			.mvDescOuter
+				p.mvDesc 2019.06.26 on sale

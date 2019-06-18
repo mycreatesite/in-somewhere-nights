@@ -3,22 +3,58 @@ section.album {
 	z-index: 2;
 	.container.outer {
 		display: flex;
+		@include md {
+			flex-wrap: wrap;
+			justify-content: center;
+			width: 70%;
+		}
+		@include sm {
+			width: calc(100% - 90px);
+		}
 		.left {
-			margin-top: -18vh;
+			margin-top: -13vh;
 			width: 50%;
 			padding-right: 5%;
+			@include md {
+				margin-top: -26vh;
+				margin-bottom: 80px;
+				width: 100%;
+				padding-right: 0%;
+			}
+			@include sm {
+				margin-top: -155px;
+				margin-bottom: 40px;
+			}
 			img {
 				width: 100%;
+				@include md {
+					width: 100%;
+					display: block;
+					margin: 0 auto;
+				}
 			}
 		}
 		.right {
 			width: 50%;
 			padding-left: 5%;
+			@include md {
+				width: 100%;
+				padding-left: 0;
+			}
 			.secHead {
 				margin-bottom: 70px;
+				@include md {
+					margin: 35px 0 70px;
+				}
+				@include sm {
+					margin-bottom: 35px;
+				}
 			}
 			.info {
 				display: flex;
+				@include md {
+					flex-wrap: wrap;
+				}
 				ul {
 					li {
 						list-style-type: none;
@@ -27,17 +63,75 @@ section.album {
 				}
 				.songs {
 					margin-right: 50px;
+					@include md {
+						position: relative;
+						width: 70%;
+						margin-right: 0;
+						&::after {
+							position: absolute;
+							right: -5px;
+							top: 30px;
+							content: '';
+							display: block;
+							width: 1px;
+							height: 370px;
+							background: $color-sub;
+						}
+					}
+					@include sm {
+						width: 80%;
+						&::after {
+							right: -5px;
+							top: 30px;
+							height: 240px;
+						}
+					}
 					ul {
+						position: relative;
+						overflow: hidden;
+						&.is-active {
+							&::after {
+								@include labelFx-label(
+									$color:$color-main,
+									$delay1:0s,
+									$span:0.35s,
+									$delay2:0.35s
+									)
+							}
+							li {
+								@include labelFx-show($delay:0.35s)
+							}
+						}
 						li {
 							font-size: 1.5rem;
 							line-height: 2;
+							opacity: 0;
+							@include md {
+								font-size: 1.7rem;
+								line-height: 2;
+							}
+							@include sm {
+								font-size: 1.2rem;
+								line-height: 1.9;
+							}
 						}
 					}
 				}
 				.data {
+					@include md {
+						width: 100%;
+						padding-top: 50px;
+						text-align: right;
+					}
 					ul {
 						padding: 70px 50px;
 						border-left: 1px solid $color-sub;
+						@include md {
+							display: inline-block;
+							border-left: none;
+							padding: 0;
+							text-align: left;
+						}
 						li {
 							font-size: 1.1rem;
 							color: $color-sub;

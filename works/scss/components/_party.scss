@@ -1,44 +1,132 @@
 section.party {
 	position: relative;
 	margin: 200px 0;
-		display: flex;
-		align-items: center;
-		.left {
-			width: calc(100% - 400px);
+	display: flex;
+	align-items: center;
+	@include md {
+		flex-wrap: wrap;
+		margin: 200px 0 130px;
+		&::before {
+			content: "";
+			display: block;
+			padding-top: 100%;
+		}
+	}
+	.left {
+		position: relative;
+		overflow: hidden;
+		width: 65%;
+		&.is-active {
+			&::after {
+				@include labelFx-label(
+				$color:$color-main,
+				$delay1:0s,
+				$span:0.4s,
+				$delay2:0.4s
+				)
+			}
 			img {
-				width: 100%;
+				@include labelFx-show($delay:0.4s)
+			}
+		}
+		@include md {
+			width: 100%;
+			margin-top: 40px;
+		}
+		img {
+			width: 100%;
+			display: block;
+			opacity: 0;
+		}
+	}
+	.right {
+		width: 35%;
+		padding-right: 100px;
+		text-align: center;
+		@include md {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			padding-right: 0;
+			&::before {
+				content: "";
 				display: block;
+				padding-top: 89%;
 			}
 		}
-		.right {
-			width: 400px;
-			padding-right: 100px;
-			text-align: center;
-			.secHead {
-				display: inline-block;
-				position: relative;
-				margin-bottom: 30px;
-				text-align: left;
+		.secHead {
+			display: inline-block;
+			position: relative;
+			margin-bottom: 30px;
+			text-align: left;
+			@include md {
+				position: absolute;
+				top: 50px;
+				left: 15%;
 			}
-			.btn {
-				position: relative;
-				left: -20px;
-				line-height: 1;
+			@include sm {
+				top: 0;
+			}
+		}
+		.btn {
+			position: relative;
+			z-index: 1;
+			left: -20px;
+			line-height: 1.2;
+			padding: 45px 0;
+			color: #fff;
+			font-weight: $font-bold;
+			background: $color-accent;
+			margin-bottom: 20px;
+			transition: 0.3s all;
+			@include btnFx($color-main,$color-accent,2px);
+			@include md {
+				position: absolute;
+				width: 70%;
+				bottom: -90px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
 				padding: 35px 0;
-				color: #fff;
-				font-weight: $font-bold;
-				background: $color-accent;
-				margin-bottom: 20px;
+				font-size: 1.7rem;
+				line-height: 1.7;
+				&::after {
+					position: absolute;
+					left: 80%;
+					bottom: -150px;
+					content: '';
+					display: block;
+					width: 1px;
+					height: 150px;
+					background: $color-sub;
+				}
+			}
+			@include sm {
+				width: calc(100% - 90px);
+				bottom: -95px;
+				left: 45px;
+				right: auto;
+				line-height: 1;
+				&::after {
+					left: 70%;
+					bottom: -110px;
+					width: 1px;
+					height: 110px;
+				}
 			}
 		}
+	}
 	&::after {
 		position: absolute;
-			left: 50%;
-			bottom: -200px;
-			content: '';
-			display: block;
-			width: 1px;
-			height: 200px;
-			background: $color-sub;
+		left: 50%;
+		bottom: -200px;
+		content: '';
+		display: block;
+		width: 1px;
+		height: 200px;
+		background: $color-sub;
+		@include md {
+			content: none;
+		}
 	}
 }
